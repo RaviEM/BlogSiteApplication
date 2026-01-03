@@ -48,11 +48,11 @@ services:
       -blogsite-network
 
   # User Service
-  user-service:
+  blog-user-service:
     build:
-      context: ./user-service
+      context: ./blog-user-service
       dockerfile: Dockerfile
-    container_name: blogsite-user-service
+    container_name: blogsite-blog-user-service
     restart: unless-stopped
     ports:
       - "8091:8081"
