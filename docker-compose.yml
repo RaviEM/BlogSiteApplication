@@ -1,0 +1,168 @@
+version: '3.8'
+
+services:
+  #MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: blogsite-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blogsite_users
+      MYSQL_USER: blogsite
+      MYSQL_PASSWORD: blogsite123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/mysql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --bind-address=0.0.0.0
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    networks:
+      - blogsite-network
+
+  #MondoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: blogsite-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./database/mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    networks:
+      -blogsite-network
+
+  # User Service
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: blogsite-user-service
+    restart: unless-stopped
+    ports:
+      - "8091:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/blogsite_users?useSSL=false&false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_PROFILES_USERNAME=root
+      - SPRING_PROFILES_PASSWORD=root
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # User Service
+  blog-command-service:
+    build:
+      context: ./blog-command-service
+      dockerfile: Dockerfile
+    container_name: blogsite-blog-command-service
+    restart: unless-stopped
+    ports:
+      - "8092:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
+    volumes:
+      - backup_data:/app/backups
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # Blog Query Service
+  blog-query-service:
+    build:
+      context: ./blog-query-service
+      dockerfile: Dockerfile
+    container_name: blogsite-blog-query-service
+    restart: unless-stopped
+    ports:
+      - "8093:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: blogsite-api-gateway
+    restart: unless-stopped
+    ports:
+      - "8090:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_SERVICE_URL=http://user-service:8081
+      - BLOG_COMMAND_SERVICE_URL=http://blog-command-service:8082
+      - BLOG_QUERY_SERVICE_URL=http://blog-query-service:8083
+    depends_on:
+      user-service:
+        condition: service_healthy
+      blog-command-service:
+        condition: service_healthy
+      blog-query-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+# Networks
+networks:
+  blogsite-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  mysql_data:
+    driver: local
+  mongo_data:
+    driver: local
+  backup_data:
+    driver: local
