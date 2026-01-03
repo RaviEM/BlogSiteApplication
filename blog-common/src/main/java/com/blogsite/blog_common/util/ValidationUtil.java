@@ -1,13 +1,13 @@
-package com.blogsite.blog_query_service;
+package com.blogsite.blog_common.util;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlogQueryServiceApplication {
+public class ValidationUtil {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BlogQueryServiceApplication.class, args);
+		SpringApplication.run(ValidationUtil.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.blogsite.blog_query_service;
+package com.blogsite.blog_common;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BlogQueryServiceApplicationTests {
+class BlogCommonApplicationTests {
 
 	@Test
 	void contextLoads() {

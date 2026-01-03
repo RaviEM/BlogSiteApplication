@@ -10,7 +10,6 @@
         <module name="blog-command-service" />
         <module name="blog-common" />
         <module name="blog-query-service" />
-        <module name="blog-query-service (1)" />
         <module name="blog-user-service" />
       </profile>
     </annotationProcessing>
@@ -29,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway" options="-parameters" />
       <module name="blog-command-service" options="-parameters" />
+      <module name="blog-common" options="-parameters" />
       <module name="blog-query-service" options="-parameters" />
       <module name="blog-user-service" options="-parameters" />
     </option>
