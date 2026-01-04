@@ -45,7 +45,7 @@ services:
       retries: 20
       start_period: 30s
     networks:
-      -blogsite-network
+      - blogsite-network
 
   # User Service
   blog-user-service:
