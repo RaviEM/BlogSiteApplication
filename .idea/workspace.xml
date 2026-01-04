@@ -2,32 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf2722dc-a0e3-484e-9a06-a2e797814541" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/controller/BlogQueryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/controller/UserBlogController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/dto/BlogSearchRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/dto/BlogWithAuthorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/repository/BlogPostQueryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/service/BlogQueryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/service/impl/BlogQueryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-query-service/src/main/resources/application-docker.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/JpaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/JwtService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-user-service/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/service/RateLimiterService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/util/ValidationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/util/ValidationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-user-service/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/blog-common/target/" />
@@ -45,45 +25,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/api-gateway/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="54" column="49" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="49" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/JwtAuthenticationFilter.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/mapper/UserMapper.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/JwtService.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/resources/application-docker.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-user-service/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/config/RateLimitConfig.java">
+        <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/service/RateLimiterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,19 +58,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.15.RELEASE/spring-web-5.2.15.RELEASE.jar!/org/springframework/http/HttpStatus.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-454">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="-918">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/ApiGatewayApplication.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-user-service/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="290">
+              <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-217">
+              <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -122,6 +97,15 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>blog-query-service-2</find>
+      <find>netf</find>
+      <find>jpa</find>
+      <find>&lt;</find>
+      <find>&lt;repository</find>
+      <find>&lt;repository&gt;</find>
+      <find>repos</find>
+      <find>settings</find>
+      <find>reposito</find>
+      <find>netflix</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,16 +114,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/api-gateway/src/main/resources/application-docker.properties" />
-        <option value="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/config/RateLimitConfig.java" />
-        <option value="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java" />
         <option value="$PROJECT_DIR$/blog-command-service/src/main/java/com/blogsite/blog_command_service/service/BackupServiceImple.java" />
         <option value="$PROJECT_DIR$/blog-command-service/src/main/java/com/blogsite/blog_command_service/service/BackupServiceImpl.java" />
         <option value="$PROJECT_DIR$/blog-command-service/src/main/java/com/blogsite/blog_command_service/service/BlogPostService.java" />
         <option value="$PROJECT_DIR$/blog-command-service/src/main/java/com/blogsite/blog_command_service/service/BackupService.java" />
         <option value="$PROJECT_DIR$/blog-common/pom.xml" />
-        <option value="$PROJECT_DIR$/blog-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/blog-command-service/pom.xml" />
         <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/exception/DuplicateResourceException.java" />
         <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/exception/ResourceNotFoundException.java" />
@@ -181,6 +160,11 @@
         <option value="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/JwtService.java" />
+        <option value="$PROJECT_DIR$/blog-user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java" />
+        <option value="$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/service/RateLimiterService.java" />
       </list>
     </option>
   </component>
@@ -193,31 +177,7 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="api-gateway" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="api-gateway" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="BlogSiteAppliction" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="BlogSiteAppliction" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="BlogSiteAppliction" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
-        </path>
-      </expand>
+      <expand />
       <select />
     </treeState>
   </component>
@@ -234,8 +194,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -301,7 +261,12 @@
             <path>
               <item name="Blog Site App SE" type="b2602c69:ProjectViewProjectNode" />
               <item name="Blog Site App SE" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-command-service" type="462c0819:PsiDirectoryNode" />
+              <item name="api-gateway" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api_gateway" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -310,19 +275,23 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1767493860439" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1767512984612" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.blogsite.api_gateway.service" />
       <recent name="com.blogsite.blog_user_service.service" />
       <recent name="com.blogsite.blog_user_service.mapper" />
       <recent name="com.blogsite.blog_user_service.config" />
       <recent name="com.blogsite.blog_query_service.service" />
-      <recent name="com.blogsite.blog_query_service.service.impl" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\Blog Site App SE\blog-user-service\src\main\resources" />
@@ -361,7 +330,7 @@
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3131068" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31796116" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -375,7 +344,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3339254" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.33697632" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3285968" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -413,29 +382,22 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/AuthResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/BlogPostResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/CategoryResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/CommentResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/LikeResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/NotificationResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/PagedResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blogsite/blog_common/model/dto/response/TagResponse.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -509,13 +471,7 @@
     <entry file="file://$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/repository/BlogPostQueryRepository.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/service/impl/BlogQueryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/service/impl/BlogQueryService.java" />
     <entry file="file://$PROJECT_DIR$/blog-query-service/src/main/java/com/blogsite/blog_query_service/service/impl/BlogQueryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -542,12 +498,8 @@
     <entry file="file://$PROJECT_DIR$/blog-user-service/Dockerfile">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/controller/UserBlogController.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/dto/BlogSearchRequest.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/controller/UserBlogController.java" />
+    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/dto/BlogSearchRequest.java" />
     <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -560,9 +512,7 @@
     <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/dto/BlogWithAuthorResponse.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/dto/BlogWithAuthorResponse.java" />
     <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/java/com/blogsite/blog_user_service/config/JpaConfig.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -584,12 +534,52 @@
     <entry file="file://$PROJECT_DIR$/blog-user-service/src/main/resources/application-docker.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-user-service/pom.xml">
+    <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/ApiGatewayApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-command-service/src/main/java/com/blogsite/blog_command_service/config/JwtAuthenticationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-gateway/mvnw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3978" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-gateway/mvnw.cmd">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-user-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-gateway/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="54" column="49" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-217">
+          <caret line="56" column="36" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/config/RateLimitConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="157">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -599,15 +589,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/filter/RateLimitingFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-454">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/ApiGatewayApplication.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.15.RELEASE/spring-web-5.2.15.RELEASE.jar!/org/springframework/http/HttpStatus.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="-918">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-gateway/src/main/java/com/blogsite/api_gateway/service/RateLimiterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -663,12 +666,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>blog-user-service</last-edited>
+          <last-edited>api-gateway</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
