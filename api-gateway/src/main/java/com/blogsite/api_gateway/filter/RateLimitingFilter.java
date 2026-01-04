@@ -41,7 +41,7 @@ public class RateLimitingFilter extends ZuulFilter{
 
         if(!rateLimiterService.isAllowed()){
             ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(HttpStatus.TOO_MANY_REQUEST.value());
+            ctx.setResponseStatusCode(HttpStatus.TOO_MANY_REQUESTS.value());
             ctx.setResponseBody(buildRateLimitResponse());
             ctx.getResponse().setContentType("application/json");
 

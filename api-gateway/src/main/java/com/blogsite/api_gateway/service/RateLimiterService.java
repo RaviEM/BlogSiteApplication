@@ -4,13 +4,18 @@ import com.blogsite.api_gateway.config.RateLimitConfig;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
+import io.github.bucket4j.Bucket4j;
+import io.github.bucket4j.Refill;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import java.time.Duration;
 
 @Service
 @Slf4j
@@ -19,48 +24,35 @@ public class RateLimiterService {
     private final RateLimitConfig config;
     private Bucket bucket;
 
-    public RateLimiterService(RateLimiterService rateLimiterService, RateLimitConfig config){
-        this.rateLimiterService = rateLimiterService;
+    public RateLimiterService(RateLimitConfig config){
         this.config = config;
     }
 
-    @Override
-    public String filterType(){ return "pre";}
+    @PostConstruct
+    public void init(){
+        Bandwidth limit = Bandwidth.classic(
+                config.getRequestsPerSecond(),
+                Refill.greedy(config.getRequestsPerSecond(), Duration.ofSeconds(1))
+        );
+        bucket = Bucket4j.builder().addLimit(limit).build();
 
-    @Override
-    public int filterOrder(){ return 1;}
+        log.info("Rate limiter initialized - Overall: {} requests/second", config.getRequestsPerSecond());
+    }
 
-    @Override
-    public boolean shouldFilter(){ return config.isEnabled();}
-
-    @Override
-    public Object run() throws ZuulException {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
-
-        log.debug("Rate limit check - URI: {}", request.getRequestURI());
-
-        if(!rateLimiterService.isAllowed()){
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(HttpStatus.TOO_MANY_REQUESTS.value());
-            ctx.setResponseBody(buildRateLimitResponse());
-            ctx.getResponse().setContentType("application/json");
-
-            addRateLimitHeaders(ctx);
-        } else {
-            addRateLimitHeaders(ctx);
+    public boolean isAllowed(){
+        if(!config.isEnabled()){
+            return true;
         }
 
-        return null;
+        boolean allowed = bucket.tryConsume(1);
+        if(!allowed){
+            log.warn("Rate limiter exceeded - {} requests/second limit reached", config.getRequestsPerSecond());
+        }
+        return allowed;
     }
 
-    private void addRateLimitHeaders(RequestContext ctx){
-        ctx.addZuulResponseHeader("X-RateLimit-Limit", String.valueOf(rateLimiterService.getRateLimit()));
-        ctx.addZuulResponseHeader("X-RateLimit-Remaining", String.valueOf(rateLimiterService.getRemainingTokens()));
-        ctx.addZuulResponseHeader("X-RateLimit-Reset", "1");
-    }
+    public long getRemainingTokens(){ return bucket.getAvailableTokens();}
 
-    private String buildRateLimitResponse() {
-        return "{\"success\":false,\"message\":\"Rate limit exceeded.Please try again later.\",\"error\":{\"code\";429,\"details\":\"Too many requests. Maximum "+ rateLimiterService.getRateLimit() + " requests per second allowed.\"}}";
-    }
+
+    public int getRateLimit() { return config.getRequestsPerSecond();}
 }
