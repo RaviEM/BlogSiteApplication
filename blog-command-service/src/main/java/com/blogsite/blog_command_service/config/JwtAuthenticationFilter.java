@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 log.debug("Valid JWT for user: {} (ID: {})", userEmail, userId);
 
                 UsernamePasswordAuthenticationToken authentication =
-                        new Username PasswordAuthenticationToken(
+                        new UsernamePasswordAuthenticationToken(
                         userEmail,
                         null,
                         Collections.emptyList()
