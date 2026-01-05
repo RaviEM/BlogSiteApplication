@@ -1,4 +1,4 @@
-FROM amazoncorretto: 21-alpine
+FROM amazoncorretto:21-alpine
 WORKDIR /app
 
 # Add non-root user for security
@@ -19,7 +19,7 @@ EXPOSE 8082
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period-60s --retries=3 \
-CMD curl -f http://localhost:8082/actuator/health || exit 1
+    CMD curl -f http://localhost:8082/actuator/health || exit 1
 
 # Run application
 ENTRYPOINT ["java", "-jar", "app.jar"]
