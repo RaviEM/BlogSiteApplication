@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 })
 @ComponentScan(basePackages = {
         "com.blogsite.blog_command_service",
-        "com.blogsite.common"
+        "com.blogsite.blog_common"
 })
 @EnableMongoRepositories(basePackages = "com.blogsite.blog_command_service.repository")
 @EnableScheduling

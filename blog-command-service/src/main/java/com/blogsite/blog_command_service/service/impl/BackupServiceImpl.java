@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Service
 @Slf4j
 public class BackupServiceImpl implements BackupService {
     private final BlogPostRepository blogPostRepository;
@@ -29,7 +31,7 @@ public class BackupServiceImpl implements BackupService {
     @Value("${backup.directory: ./backups}")
     private String backupDirectory;
 
-    public BackupService Impl(BlogPostRepository blogPostRepository) {
+    public BackupServiceImpl(BlogPostRepository blogPostRepository) {
         this.blogPostRepository = blogPostRepository;
         this.objectMapper = new ObjectMapper();
         this.objectMapper.registerModule(new JavaTimeModule());

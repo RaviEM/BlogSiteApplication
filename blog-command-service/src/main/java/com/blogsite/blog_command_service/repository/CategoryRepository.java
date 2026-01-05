@@ -7,12 +7,10 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryRepository extends MongoRepository<Category, String> {
-    /**
-     * Find category by name (case-insensitive).
-     /*
-     Optional<Category> findByNameIgnoreCase(String name);
-     /**
-     * Check if category with name exists (case-insensitive). */
+
+
+    Optional<Category> findByNameIgnoreCase(String name);
+
     boolean existsByNameIgnoreCase(String name);
     /**
      * Find all active categories.
