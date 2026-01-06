@@ -13,6 +13,7 @@ import java.util.List;
 public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
+
         CorsConfiguration config = new CorsConfiguration();
         // Allow requests from Angular dev server and common ports
         config.setAllowedOrigins(Arrays.asList(

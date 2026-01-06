@@ -2,7 +2,7 @@ package com.blogsite.blog_common.util;
 
 import com.blogsite.blog_common.constant.ApiConstants;
 import com.blogsite.blog_common.exception. ValidationException;
-import java.util.regex. Pattern;
+import java.util.regex.Pattern;
 
  public final class ValidationUtil {
      private static final Pattern EMAIL_PATTERN = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.com$");

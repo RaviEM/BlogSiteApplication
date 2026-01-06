@@ -1,7 +1,6 @@
 package com.blogsite.blog_user_service.service.impl;
 
 
-import com.blogsite.blog_common.constant.ApiConstants;
 import com.blogsite.blog_common.exception. DuplicateResourceException;
 import com.blogsite.blog_common.exception.ResourceNotFoundException;
 import com.blogsite.blog_common.exception.UnauthorizedException;
@@ -11,16 +10,16 @@ import com.blogsite.blog_common.model.dto.request.UserRegistrationRequest;
 import com.blogsite.blog_common.model.dto.response. AuthResponse;
 import com.blogsite.blog_common.model.dto.response.UserResponse;
 import com.blogsite.blog_common.model.entity.User;
-import com.blogsite.blog_common.util. ValidationUtil;
+import com.blogsite.blog_common.util.ValidationUtil;
 import com.blogsite.blog_user_service.mapper.UserMapper;
 import com.blogsite.blog_user_service.repository.UserRepository;
 import com.blogsite.blog_user_service.service.JwtService;
 import com.blogsite.blog_user_service.service.UserService;
 import lombok. RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password. PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation. Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 /**
  * Implementation of UserService.

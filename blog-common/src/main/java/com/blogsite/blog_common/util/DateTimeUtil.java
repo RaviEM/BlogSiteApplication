@@ -1,13 +1,9 @@
 package com.blogsite.blog_common.util;
 
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Formatter;
-
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 public final class DateTimeUtil {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");

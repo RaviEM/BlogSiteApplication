@@ -27,29 +27,36 @@ public class Notification {
     @Field("user_id")
     @Indexed
     private Long userId;
+
     @Field("message")
     private String message;
+
     @Field("timestamp")
     private LocalDateTime timestamp;
+
     @Field("is_read")
     @Builder.Default
     private Boolean isRead = false;
+
     /**
      * Type of notification (e.g., COMMENT, LIKE, FOLLOW, SYSTEM).
      */
     @Field("notification_type")
     @Indexed
     private NotificationType notificationType;
+
     /**
      * Optional reference to related entity (e.g., postId, commentId).
      */
     @Field("reference_id")
     private String referenceId;
+
     /**
      * Optional reference type (e.g., "POST", "COMMENT").
      */
     @Field("reference_type")
     private String referenceType;
+
     @Field("created_at")
     private LocalDateTime createdAt;
 

@@ -2,7 +2,7 @@ package com.blogsite.blog_common.model.entity;
 
 
 import jakarta.validation.constraints.NotBlank;
-import lombok. AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,21 +26,27 @@ import java.util.List;
 public class Tag {
     @Id
     private String tagId;
+
     @NotBlank (message = "Tag name is mandatory") @Field("name")
     @Indexed(unique = true)
     private String name;
+
     /**
      * List of blog post IDs associated with this tag. */
     @Field("post_ids")
     @Builder.Default
     private List<String> postIds = new ArrayList<>();
+
     @Field("created_at")
     private LocalDateTime createdAt;
+
     @Field("updated_at")
     private LocalDateTime updatedAt;
+
     @Field("post_count")
     @Builder.Default
     private Long postCount = 0L;
+
     /**
      * Adds a post ID to the tag.
      */

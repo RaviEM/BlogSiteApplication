@@ -83,6 +83,7 @@ public class BackupServiceImpl implements BackupService {
             objectMapper.writeValue(backupFile, allPosts);
             String absolutePath = backupFile.getAbsolutePath();
             log.info("Backup completed successfully. File: () () records)", absolutePath, allPosts.size());
+
             return absolutePath;
         } catch (IOException e) {
             log.error("Failed to perform backup: {}", e.getMessage(), e);

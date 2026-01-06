@@ -4,7 +4,7 @@ package com.blogsite.blog_user_service.mapper;
 import com.blogsite.blog_common.model.dto.request.UserRegistrationRequest;
 import com.blogsite.blog_common.model.dto.response.UserResponse;
 import com.blogsite.blog_common.model.entity.User;
-import org.springframework. stereotype.Component;
+import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 /**

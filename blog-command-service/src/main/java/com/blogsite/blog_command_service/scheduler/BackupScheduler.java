@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation. Scheduled;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 /**
  *Scheduled job for automatic backup operations.
@@ -20,6 +20,7 @@ public class BackupScheduler {
     private final BackupService backupService;
     @Value("${backup.enabled:true}")
     private boolean backupEnabled;
+
     /**
      * Check record count every hour and trigger backup if threshold is exceeded.
      * Cron: 0 0 ✶ ✶ ✶ ✶ = Every hour at minute 0
@@ -30,9 +31,11 @@ public class BackupScheduler {
             log.debug("Backup is disabled");
             return;
         }
+
         log.info("Running scheduled backup check...");
         long recordCount = backupService.getRecordCount();
         log.info("Current record count: {} (Threshold: {})", recordCount, backupService.getThreshold());
+
         if (backupService.isBackupNeeded()) {
             log.info("Backup threshold exceeded. Initiating backup...");
             try {

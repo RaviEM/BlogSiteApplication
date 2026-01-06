@@ -10,13 +10,12 @@ import com.blogsite.blog_common.exception.DuplicateResourceException;
 import com.blogsite.blog_common.exception.ResourceNotFoundException;
 import com.blogsite.blog_common.exception.ValidationException;
 import com.blogsite.blog_common.model.dto.request.BlogPostRequest;
-import com.blogsite.blog_common.model.dto.response.BlogPostResponse;
 import com.blogsite.blog_common.model.entity.BlogPost;
 import com.blogsite.blog_common.model.entity.Category;
-import lombok. RequiredArgsConstructor;
-import lombok. extern.slf4j.Slf4j;
-import org.springframework. stereotype.Service;
-import org.springframework.transaction. annotation. Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction. annotation.Transactional;
 import java.time.LocalDateTime;
 
 @Service

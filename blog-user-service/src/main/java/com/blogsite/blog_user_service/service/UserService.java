@@ -2,10 +2,10 @@ package com.blogsite.blog_user_service.service;
 
 
 
-import com.blogsite.blog_common.model. dto. request. LoginRequest;
-import com.blogsite.blog_common.model. dto. request.UserRegistrationRequest;
-import com.blogsite.blog_common.model. dto. response. AuthResponse;
-import com.blogsite.blog_common.model. dto. response.UserResponse;
+import com.blogsite.blog_common.model.dto.request.LoginRequest;
+import com.blogsite.blog_common.model.dto.request.UserRegistrationRequest;
+import com.blogsite.blog_common.model.dto.response.AuthResponse;
+import com.blogsite.blog_common.model.dto.response.UserResponse;
 import java.util.List;
 /**
  * Service interface for User operations.

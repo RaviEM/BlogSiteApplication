@@ -20,4 +20,5 @@ boolean existsByBlogNameAndAuthorId(String blogName, Long authorId);
  * Find a post by blog name and author ID.
  */
 Optional<BlogPost> findByBlogNameAndAuthorId(String blogName, Long authorId);
+
 }

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok. AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,6 +44,7 @@ public class User {
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).*$", message = "Password must contain at least one letter and one digit")
     @Column(name = "password", nullable = false)
     private String password;
+
     /**
      * List of blog post IDs authored by this user.
      * Stored as a comma-separated string in MySQL, references MongoDB Blog Post documents. */
@@ -71,7 +72,6 @@ public class User {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
-
 
      public void addPost(String postId) {
          if (postIds == null) {
