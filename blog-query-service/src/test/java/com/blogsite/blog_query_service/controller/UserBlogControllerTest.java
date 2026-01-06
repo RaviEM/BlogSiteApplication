@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
@@ -18,10 +20,17 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = UserBlogController.class, excludeAutoConfiguration = {
-        org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.class,
-        org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration.class
-})
+@WebMvcTest(
+        controllers = UserBlogController.class,
+        excludeAutoConfiguration = {
+                org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.class,
+                org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration.class
+        },
+        excludeFilters = @ComponentScan.Filter(
+                type = FilterType.REGEX,
+                pattern = "com\\.blogsite\\.blog_query_service\\.repository\\..*"
+        )
+)
 @DisplayName("UserBlogController Tests")
 class UserBlogControllerTest {
 
