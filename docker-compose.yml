@@ -62,8 +62,8 @@ services:
   # User Service
   blog-user-service:
     build:
-      context: ./blog-user-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./blog-user-service/Dockerfile
     container_name: blogsite-blog-user-service
     restart: unless-stopped
     ports:
@@ -85,11 +85,11 @@ services:
     networks:
       - blogsite-network
 
-  # User Service
+  # Blog Command Service
   blog-command-service:
     build:
-      context: ./blog-command-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./blog-command-service/Dockerfile
     container_name: blogsite-blog-command-service
     restart: unless-stopped
     ports:
@@ -114,8 +114,8 @@ services:
   # Blog Query Service
   blog-query-service:
     build:
-      context: ./blog-query-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./blog-query-service/Dockerfile
     container_name: blogsite-blog-query-service
     restart: unless-stopped
     ports:
@@ -138,8 +138,8 @@ services:
   # API Gateway
   api-gateway:
     build:
-      context: ./api-gateway
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./api-gateway/Dockerfile
     container_name: blogsite-api-gateway
     restart: unless-stopped
     ports:
