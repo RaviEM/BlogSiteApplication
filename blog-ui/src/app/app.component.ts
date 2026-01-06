@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CategorySearchComponent } from './components/category-search/category-search.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CategorySearchComponent],
+  imports: [RouterOutlet],
   template: `
     <div class="app-container">
       <header class="app-header">
@@ -13,7 +12,7 @@ import { CategorySearchComponent } from './components/category-search/category-s
         <p>Discover and explore blogs by category</p>
       </header>
       <main class="app-main">
-        <app-category-search></app-category-search>
+        <router-outlet></router-outlet>
       </main>
     </div>
   `,

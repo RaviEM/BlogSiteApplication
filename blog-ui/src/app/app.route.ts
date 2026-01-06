@@ -10,5 +10,10 @@ export const routes: Routes = [
     path: 'search',
     loadComponent: () => import('./components/category-search/category-search.component')
       .then(m => m.CategorySearchComponent)
+  },
+  {
+    path: 'blog/:id',
+    loadComponent: () => import('./components/blog-detail/blog-detail.component')
+      .then(m => m.BlogDetailComponent)
   }
 ];
