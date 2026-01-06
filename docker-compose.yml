@@ -59,111 +59,111 @@ services:
     networks:
       - blogsite-network
 
-#  # User Service
-#  blog-user-service:
-#    build:
-#      context: ./blog-user-service
-#      dockerfile: Dockerfile
-#    container_name: blogsite-blog-user-service
-#    restart: unless-stopped
-#    ports:
-#      - "8091:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/blogsite_users?useSSL=false&false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-#      - SPRING_PROFILES_USERNAME=root
-#      - SPRING_PROFILES_PASSWORD=root
-#    depends_on:
-#      mysql:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 20
-#      start_period: 60s
-#    networks:
-#      - blogsite-network
-#
-#  # User Service
-#  blog-command-service:
-#    build:
-#      context: ./blog-command-service
-#      dockerfile: Dockerfile
-#    container_name: blogsite-blog-command-service
-#    restart: unless-stopped
-#    ports:
-#      - "8092:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
-#    volumes:
-#      - backup_data:/app/backups
-#    depends_on:
-#      mongodb:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 20
-#      start_period: 60s
-#    networks:
-#      - blogsite-network
-#
-#  # Blog Query Service
-#  blog-query-service:
-#    build:
-#      context: ./blog-query-service
-#      dockerfile: Dockerfile
-#    container_name: blogsite-blog-query-service
-#    restart: unless-stopped
-#    ports:
-#      - "8093:8083"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
-#    depends_on:
-#      mongodb:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 20
-#      start_period: 60s
-#    networks:
-#      - blogsite-network
-#
-#  # API Gateway
-#  api-gateway:
-#    build:
-#      context: ./api-gateway
-#      dockerfile: Dockerfile
-#    container_name: blogsite-api-gateway
-#    restart: unless-stopped
-#    ports:
-#      - "8090:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#      - SPRING_SERVICE_URL=http://blog-user-service:8081
-#      - BLOG_COMMAND_SERVICE_URL=http://blog-command-service:8082
-#      - BLOG_QUERY_SERVICE_URL=http://blog-query-service:8083
-#    depends_on:
-#      blog-user-service:
-#        condition: service_healthy
-#      blog-command-service:
-#        condition: service_healthy
-#      blog-query-service:
-#        condition: service_healthy
-#    healthcheck:
-#      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 20
-#      start_period: 60s
-#    networks:
-#      - blogsite-network
+  # User Service
+  blog-user-service:
+    build:
+      context: ./blog-user-service
+      dockerfile: Dockerfile
+    container_name: blogsite-blog-user-service
+    restart: unless-stopped
+    ports:
+      - "8091:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/blogsite_users?useSSL=false&false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_PROFILES_USERNAME=root
+      - SPRING_PROFILES_PASSWORD=root
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # User Service
+  blog-command-service:
+    build:
+      context: ./blog-command-service
+      dockerfile: Dockerfile
+    container_name: blogsite-blog-command-service
+    restart: unless-stopped
+    ports:
+      - "8092:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
+    volumes:
+      - backup_data:/app/backups
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # Blog Query Service
+  blog-query-service:
+    build:
+      context: ./blog-query-service
+      dockerfile: Dockerfile
+    container_name: blogsite-blog-query-service
+    restart: unless-stopped
+    ports:
+      - "8093:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/blogsite_blogs
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
+
+  # API Gateway
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: blogsite-api-gateway
+    restart: unless-stopped
+    ports:
+      - "8090:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_SERVICE_URL=http://blog-user-service:8081
+      - BLOG_COMMAND_SERVICE_URL=http://blog-command-service:8082
+      - BLOG_QUERY_SERVICE_URL=http://blog-query-service:8083
+    depends_on:
+      blog-user-service:
+        condition: service_healthy
+      blog-command-service:
+        condition: service_healthy
+      blog-query-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 60s
+    networks:
+      - blogsite-network
 
   mongo-express:
     image: mongo-express:latest
