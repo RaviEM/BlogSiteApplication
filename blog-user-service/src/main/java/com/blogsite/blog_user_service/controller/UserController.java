@@ -63,17 +63,20 @@ import java.util.List;
         return ResponseEntity.ok(ApiResponse.success(users, "Users retrieved successfully"));
     }
 
-    @GetMapping("/{userId}")
+    // Use a numeric-only path variable to avoid matching reserved paths like "register"
+
+
+    @GetMapping("/{userId:\\d+}")
     @Operation(summary = "Get user by ID", description = "Retrieves user details by user ID")
     public ResponseEntity<ApiResponse<UserResponse>> getUserById(@PathVariable Long userId) {
         log.info("Received request to get user with ID: {}", userId);
-
         UserResponse user = userService.getUserById(userId);
 
         return ResponseEntity.ok(ApiResponse.success(user, "User retrieved successfully"));
     }
 
-    @DeleteMapping(ApiConstants.USER_DELETE + "/{userId}")
+    // Constrain userId to digits to prevent accidental matches (e.g., "register")
+    @DeleteMapping(ApiConstants.USER_DELETE + "/{userId:\\d+}")
     @Operation(summary = "Delete user", description = "Deactivates a user account (soft delete)")
     public ResponseEntity<ApiResponse<Void>> deleteUser(@PathVariable Long userId) {
         log.info("Received request to delete user with ID: {}", userId);

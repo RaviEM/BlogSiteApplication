@@ -6,7 +6,7 @@ import java.util.regex. Pattern;
 
  public final class ValidationUtil {
      private static final Pattern EMAIL_PATTERN = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.com$");
-     private static final Pattern ALPHANUMERIC_PATTERN = Pattern.compile("^(?=.*[a-zA-Z]) (?=.*[0-9]).*$");
+     private static final Pattern ALPHANUMERIC_PATTERN = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d).*$");
 
      private ValidationUtil() {
      }

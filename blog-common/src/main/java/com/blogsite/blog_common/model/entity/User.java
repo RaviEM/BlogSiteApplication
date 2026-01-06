@@ -41,7 +41,8 @@ public class User {
 
     @NotBlank (message = "Password is mandatory")
     @Size(min = 8, message = "Password must be at least 8 characters")
-    @Pattern(regexp = "^(?=.*[a-zA-Z]) (?=.*[0-9]).*$", message = "Password must be alphanumeric") @Column(name = "password", nullable = false)
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).*$", message = "Password must contain at least one letter and one digit")
+    @Column(name = "password", nullable = false)
     private String password;
     /**
      * List of blog post IDs authored by this user.

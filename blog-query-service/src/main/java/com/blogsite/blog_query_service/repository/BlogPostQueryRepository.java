@@ -1,13 +1,14 @@
 package com.blogsite.blog_query_service.repository;
 
 
-import com.blogsite.blog_common.model.entity. BlogPost;
-import org.springframework.data.domain. Page;
-import org.springframework.data.domain. Pageable;
-import org.springframework.data.mongodb. repository.MongoRepository;
+import com.blogsite.blog_common.model.entity.BlogPost;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework. stereotype. Repository;
-import java.time.LocalDateTime; import java.util.List;
+import org.springframework.stereotype. Repository;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface BlogPostQueryRepository extends MongoRepository<BlogPost, String> {
@@ -34,7 +35,10 @@ public interface BlogPostQueryRepository extends MongoRepository<BlogPost, Strin
 
     /**
      * Find all published posts by author name/email.
+     * Uses case-insensitive matching for author name.
+     * Note: This method uses partial matching. For exact matching, use the custom implementation.
      */
+    @Query(value = "{ 'author_name': { $regex: ?0, $options: 'i' }, 'is_published': true }")
     List<BlogPost> findByAuthorNameAndIsPublishedTrue(String authorName);
 
     /**

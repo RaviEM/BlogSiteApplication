@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
         }
 // Validate password
         if (!ValidationUtil.isValidPassword(request.getPassword())) {
-            errors.addError("password", "Password must be alphanumeric and at least 8 characters");
+            errors.addError("password", "Password must be at least 8 characters and include a letter and a digit");
         }
 // Validate username
         if (request.getUserName() == null || request.getUserName().isBlank()) {

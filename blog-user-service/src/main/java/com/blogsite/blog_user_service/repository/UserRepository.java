@@ -1,10 +1,10 @@
 package com.blogsite.blog_user_service.repository;
 
-import com.blogsite.blog_common.model.entity. User;
+import com.blogsite.blog_common.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype. Repository;
+import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 /**
@@ -50,6 +50,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * Find users by username containing (search).
      */
-    @Query("SELECT u FROM User u WHERE u.username LIKE %: keyword% AND u.isActive = true")
+    @Query("SELECT u FROM User u WHERE u.username LIKE CONCAT('%', :keyword, '%') AND u.isActive = true")
     List<User> searchByUsername(@Param("keyword") String keyword);
 }

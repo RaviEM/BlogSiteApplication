@@ -26,9 +26,7 @@ public class UserRegistrationRequest {
     private String userEmail;
 
     @NotBlank(message = "Password is mandatory")
-    @Size(min = 8, message
-            =
-            "Password must be at least 8 characters")
-    @Pattern(regexp = "^(?=.* [a-zA-Z]) (?=.*[0-9]).*$", message = "Password must be alphanumeric")
+    @Size(min = 8, message = "Password must be at least 8 characters")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d).*$", message = "Password must contain at least one letter and one digit")
     private String password;
 }

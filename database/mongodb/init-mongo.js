@@ -1,9 +1,15 @@
-//:
 // BLOG SITE APPLICATION - MongoDB Schema
 // Database: blogsite_blogs
-// Collections: blog_posts, categories, comments, tags, likes, notifications // ===
-// Switch to the blog database
+// Collections: blog_posts, categories, comments, tags, likes, notifications
+
+print('Starting MongoDB initialization for blogsite_blogs database...');
+
+// Switch to the blog database (creates it if it doesn't exist)
 db = db.getSiblingDB('blogsite_blogs');
+
+// Ensure database is created by running a simple command
+db.runCommand({ ping: 1 });
+print('Switched to blogsite_blogs database');
 // ==
 // BLOG POSTS COLLECTION
 // ===
@@ -11,16 +17,16 @@ db.createCollection('blog_posts', {
 	validator: {
 		$jsonSchema: {
 			bsonType: 'object',
-			required: ['title', 'content', 'category_id', 'author_id', 'content', 'category_id', 'author_id', 'author_name', 'created_at'],
+			required: ['blog_name', 'content', 'category_id', 'author_id', 'author_name', 'created_at'],
 			properties: {
 				_id: {
 					bsonType: 'objectId',
 					description: 'Unique identifier for the blog post'
 				},
-				title: {
+				blog_name: {
 					bsonType: 'string',
 					minLength: 20,
-					description: 'Blog post title minimum 20 characters
+					description: 'Blog post name/title minimum 20 characters'
 				},
 				content: {
 					bsonType: 'string',
@@ -32,7 +38,7 @@ db.createCollection('blog_posts', {
 				},
 				author_id: {
 					bsonType: 'long',
-					description: 'Reference to user ID in MySQL
+					description: 'Reference to user ID in MySQL'
 				},
 				author_name: {
 					bsonType: 'string',
@@ -76,15 +82,15 @@ db.createCollection('blog_posts', {
 				comment_count: {
 					bsonType: 'long',
 					minimum: 0,
-					description: 'Number of comments
+					description: 'Number of comments'
 				},
 				created_at: {
 					bsonType: 'date',
-					description: 'Creation timestamp"
+					description: 'Creation timestamp'
 				},
 				updated_at: {
 					bsonType: 'date',
-					description: 'Last update timestamp"
+					description: 'Last update timestamp'
 				}
 			}
 		}
@@ -94,39 +100,15 @@ db.createCollection('blog_posts', {
 });
 // Indexes for blog_posts
 
-db.blog_posts.createIndex({
-			'title': 'text '
-			content ': '
-			text ' }, { name: '
-			idx_blog_posts_text_search ' });
-			db.blog_posts.createIndex({
-					'category_id": 1 }, { name: '
-					idx_blog_posts_category ' });
-					db.blog_posts.createIndex({
-							'author_id": 1 }, { name: '
-							idx_blog_posts_author ' });
-							db.blog_posts.createIndex({
-								'created_at' - 1
-							}, {
-								name: 'idx_blog_posts_created_at'
-							});
-							db.blog_posts.createIndex({
-								'is_published': 1,
-								'created_at': -1
-							}, {
-								name: 'idx_blog_posts_published'
-							});
-							db.blog_posts.createIndex({
-								'tag_ids': 1
-							}, {
-								name: 'idx_blog_posts_tags'
-							});
-							db.blog_posts.createIndex({
-								'view_count': 1
-							}, {
-								name: 'idx_blog_posts_popular'
-							});
-							print('Created blog_posts collection with indexes');
+db.blog_posts.createIndex({'blog_name': 'text', 'content': 'text' }, { name: 'idx_blog_posts_text_search' });
+db.blog_posts.createIndex({'category_id': 1 }, { name: 'idx_blog_posts_category' });
+db.blog_posts.createIndex({'author_id': 1 }, { name: 'idx_blog_posts_author' });
+db.blog_posts.createIndex({'author_name': 1 }, { name: 'idx_blog_posts_author_name' });
+db.blog_posts.createIndex({'created_at': 1}, {name: 'idx_blog_posts_created_at'});
+db.blog_posts.createIndex({'is_published': 1, 'created_at': -1}, {name: 'idx_blog_posts_published'});
+db.blog_posts.createIndex({'tag_ids': 1}, {name: 'idx_blog_posts_tags'});
+db.blog_posts.createIndex({'view_count': 1}, {name: 'idx_blog_posts_popular'});
+print('Created blog_posts collection with indexes');
 							// ==
 							// CATEGORIES COLLECTION
 							// ====
@@ -151,10 +133,9 @@ db.blog_posts.createIndex({
 												},
 												post_ids: {
 													bsonType: 'array',
-													items: bsonType: 'string'
+													items: {bsonType: 'string'},
+													description: 'Array of post IDs in this category'
 												},
-												description: 'Array of post IDs in this category'
-											},
 											post_count: {
 												bsonType: 'long',
 												minimum: 0,
@@ -168,9 +149,9 @@ db.blog_posts.createIndex({
 												bsonType: 'date',
 												description: 'Creation timestamp'
 											},
-											updated at: {
+											updated_at: {
 												bsonType: 'date',
-												description: 'Last update timestamp
+												description: 'Last update timestamp'
 											}
 										}
 									}
@@ -179,20 +160,10 @@ db.blog_posts.createIndex({
 								validationAction: 'warn'
 							});
 						// Indexes for categories
-						db.categories.createIndex({
-							'name': 1
-						}, {
-							unique: true,
-							name: 'idx_categories_name_unique'
-						}); db.categories.createIndex({
-								'is_active": 1 }, { name: '
-								idx_categories_active ' });
-								db.categories.createIndex({
-									'post_count': -1
-								}, {
-									name: 'idx_categories_post_count'
-								});
-								print('Created categories collection with indexes');
+db.categories.createIndex({'name': 1}, {unique: true, name: 'idx_categories_name_unique'});
+db.categories.createIndex({'is_active': 1 }, { name: 'idx_categories_active' });
+db.categories.createIndex({'post_count': -1}, {name: 'idx_categories_post_count'});
+print('Created categories collection with indexes');
 								// COMMENTS COLLECTION
 								// ==
 								db.createCollection('comments', {
@@ -235,11 +206,11 @@ db.blog_posts.createIndex({
 												},
 												created_at: {
 													bsonType: 'date',
-													description: 'Creation timestamp"
+													description: 'Creation timestamp'
 												},
 												updated_at: {
 													bsonType: 'date',
-													description: 'Last update timestamp"
+													description: 'Last update timestamp'
 												},
 											}
 										}
@@ -251,28 +222,11 @@ db.blog_posts.createIndex({
 
 
 								// Indexes for comments
-								db.comments.createIndex({
-									'post_id': 1,
-									'created_at' - 1
-								}, {
-									name: 'idx_comments_post_date'
-								});
-								db.comments.createIndex({
-									'author_id': 1
-								}, {
-									name: 'idx_comments_author'
-								});
-								db.comments.createIndex({
-									'parent_comment_id': 1
-								}, {
-									name: 'idx_comments_parent'
-								});
-								db.comments.createIndex({
-									'is_active': 1
-								}, {
-									name: 'idx_comments_active'
-								});
-								print('Created comments collection with indexes');
+db.comments.createIndex({'post_id': 1, 'created_at': -1}, {name: 'idx_comments_post_date'});
+db.comments.createIndex({'author_id': 1}, {name: 'idx_comments_author'});
+db.comments.createIndex({'parent_comment_id': 1}, {name: 'idx_comments_parent'});
+db.comments.createIndex({'is_active': 1}, {name: 'idx_comments_active'});
+print('Created comments collection with indexes');
 								// :
 								// TAGS COLLECTION
 								// ==
@@ -288,7 +242,7 @@ db.blog_posts.createIndex({
 												},
 												name: {
 													bsonType: 'string',
-													description: 'Tag name
+													description: 'Tag name'
 												},
 												post_ids: {
 													bsonType: 'array',
@@ -304,11 +258,11 @@ db.blog_posts.createIndex({
 												},
 												created_at: {
 													bsonType: 'date',
-													description: 'Creation timestamp"
+													description: 'Creation timestamp'
 												},
 												updated_at: {
 													bsonType: 'date',
-													description: 'Last update timestamp
+													description: 'Last update timestamp'
 												}
 											}
 										}
@@ -317,18 +271,9 @@ db.blog_posts.createIndex({
 									validationLevel: 'moderate'
 								});
 								// Indexes for tags
-								db.tags.createIndex({
-									'name': 1
-								}, {
-									unique: true,
-									name: 'idx_tags_name_unique'
-								});
-								db.tags.createIndex({
-									'post_count': -1
-								}, {
-									name: 'idx_tags_popular'
-								});
-								print('Created tags collection with indexes');
+db.tags.createIndex({'name': 1}, {unique: true, name: 'idx_tags_name_unique'});
+db.tags.createIndex({'post_count': -1}, {name: 'idx_tags_popular'});
+print('Created tags collection with indexes');
 								// ====
 								// LIKES COLLECTION
 								// ==
@@ -362,26 +307,14 @@ db.blog_posts.createIndex({
 									validationLevel: 'strict'
 								});
 								// Indexes for likes - compound unique index to prevent duplicate likes
-								db.likes.createIndex({
-									'user_id': 1,
-									'post_id': 1
-								}, {
-									unique: true,
-									name: 'idx_likes_user_post_unique'
-								});
-								db.likes.createIndex({
-									'post_id': 1
-								}, {
-									name: 'idx_likes_post'
-								});
-								db.likes.createIndex({
-										'user_id": 1 }, { name: '
-										idx_likes_user ' });
-										print('Created likes collection with indexes');
+db.likes.createIndex({'user_id': 1, 'post_id': 1}, {unique: true, name: 'idx_likes_user_post_unique'});
+db.likes.createIndex({'post_id': 1}, {name: 'idx_likes_post'});
+db.likes.createIndex({'user_id': 1 }, { name: 'idx_likes_user' });
+print('Created likes collection with indexes');
 										//
 										// NOTIFICATIONS COLLECTION
 										// ==
-										db.createCollection('notifications {
+										db.createCollection('notifications', {
 											validator: {
 												$jsonSchema: {
 													bsonType: 'object',
@@ -401,59 +334,43 @@ db.blog_posts.createIndex({
 														},
 														timestamp: {
 															bsonType: 'date',
-															description: 'Notification timestamp
+															description: 'Notification timestamp'
 														},
 														is_read: {
 															bsonType: 'bool',
 															description: 'Read status'
 														},
 														notification_type: {
-															enum: ['COMMENT', 'LIKE', 'FOLLOW'
+															enum: ['COMMENT', 'LIKE', 'FOLLOW',
 																'MENTION', 'SYSTEM', 'NEW_POST'
 															],
-															description: 'Type of notification
+															description: 'Type of notification'
 														},
 														reference_id: {
 															bsonType: ['string', 'null'],
 															description: 'Reference to related entity'
-															reference_type: {
-																bsonType: ['string', 'null'],
-																description: 'Type of referenced entity'
-															},
-															created_at: {
-																bsonType: 'date',
-																description: 'Creation timestamp"
-															}
+														},
+														reference_type: {
+															bsonType: ['string', 'null'],
+															description: 'Type of referenced entity'
+														},
+														created_at: {
+															bsonType: 'date',
+															description: 'Creation timestamp'
 														}
 													}
+													}
 												},
-												validation Level: 'moderate',
+												validationLevel: 'moderate',
 												validationAction: 'warn'
 											});
 										// Indexes for notifications
-										db.notifications.createIndex({
-											'user_id': 1,
-											'created_at': -1
-										}, {
-											name: 'idx_notifications_user_date'
-										});
-										db.notifications.createIndex({
-												'user_id': 1,
-												'is_read: 1 }, { name: '
-												idx_notifications_user_unread ' });
-												db.notifications.createIndex({
-													'notification_type': 1
-												}, {
-													name: 'idx_notifications_type'
-												});
+db.notifications.createIndex({'user_id': 1, 'created_at': -1}, {name: 'idx_notifications_user_date'});
+db.notifications.createIndex({'user_id': 1, 'is_read': 1 }, { name: 'idx_notifications_user_unread' });
+db.notifications.createIndex({'notification_type': 1}, {name: 'idx_notifications_type'});
 												// TTL index to auto-delete old notifications after 90 days
-												db.notifications.createIndex({
-													'created_at': 1
-												}, {
-													expireAfterSeconds: 7776000,
-													name: 'idx_notifications_ttl'
-												});
-												print('Created notifications collection with indexes');
+db.notifications.createIndex({'created_at': 1}, {expireAfterSeconds: 7776000, name: 'idx_notifications_ttl'});
+print('Created notifications collection with indexes');
 												//
 												// UTILITY FUNCTIONS
 												// Function to get blog posts by category with pagination
@@ -466,22 +383,29 @@ db.blog_posts.createIndex({
 												//
 												// Sample category
 												db.categories.insertOne({
-
 													name: 'Technology and Innovation',
 													description: 'Articles about latest technology trends and innovations',
 													post_ids: [],
-													post_count: NumberLong(0),
+													post_count: 0,
 													is_active: true,
 													created_at: new Date(),
 													updated_at: new Date()
 												});
+												print('Inserted sample category');
+												
 												// Sample tag
 												db.tags.insertOne({
 													name: 'programming',
 													post_ids: [],
-													post_count: NumberLong(0),
+													post_count: 0,
 													created_at: new Date(),
 													updated_at: new Date()
 												});
+												print('Inserted sample tag');
 
-												print('MongoDB initialization completed successfully!');
+												print('Sample data inserted successfully!');
+print('========================================');
+print('MongoDB initialization completed successfully!');
+print('Database: blogsite_blogs');
+print('Collections created: blog_posts, categories, comments, tags, likes, notifications');
+print('========================================');
