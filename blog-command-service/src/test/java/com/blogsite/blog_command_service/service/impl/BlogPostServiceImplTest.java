@@ -144,6 +144,54 @@ class BlogPostServiceImplTest {
         }
 
         @Test
+        @DisplayName("Should throw ValidationException for null content")
+        void shouldThrowExceptionForNullContent() {
+            // Given
+            request.setContent(null);
+
+            // When/Then
+            assertThrows(ValidationException.class, 
+                () -> blogPostService.createBlogPost(request, 1L, "testuser", "test@example.com"));
+            verify(blogPostRepository, never()).save(any(BlogPost.class));
+        }
+
+        @Test
+        @DisplayName("Should throw ValidationException for blank content")
+        void shouldThrowExceptionForBlankContent() {
+            // Given
+            request.setContent("   ");
+
+            // When/Then
+            assertThrows(ValidationException.class, 
+                () -> blogPostService.createBlogPost(request, 1L, "testuser", "test@example.com"));
+            verify(blogPostRepository, never()).save(any(BlogPost.class));
+        }
+
+        @Test
+        @DisplayName("Should throw ValidationException for null blog name")
+        void shouldThrowExceptionForNullBlogName() {
+            // Given
+            request.setBlogName(null);
+
+            // When/Then
+            assertThrows(ValidationException.class, 
+                () -> blogPostService.createBlogPost(request, 1L, "testuser", "test@example.com"));
+            verify(blogPostRepository, never()).save(any(BlogPost.class));
+        }
+
+        @Test
+        @DisplayName("Should throw ValidationException for null category")
+        void shouldThrowExceptionForNullCategory() {
+            // Given
+            request.setCategory(null);
+
+            // When/Then
+            assertThrows(ValidationException.class, 
+                () -> blogPostService.createBlogPost(request, 1L, "testuser", "test@example.com"));
+            verify(blogPostRepository, never()).save(any(BlogPost.class));
+        }
+
+        @Test
         @DisplayName("Should throw DuplicateResourceException for duplicate blog name")
         void shouldThrowExceptionForDuplicateBlogName() {
             // Given

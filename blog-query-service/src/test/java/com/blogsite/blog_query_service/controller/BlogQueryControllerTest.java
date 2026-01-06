@@ -20,7 +20,10 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(BlogQueryController.class)
+@WebMvcTest(controllers = BlogQueryController.class, excludeAutoConfiguration = {
+        org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.class,
+        org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration.class
+})
 @DisplayName("BlogQueryController Tests")
 class BlogQueryControllerTest {
 
