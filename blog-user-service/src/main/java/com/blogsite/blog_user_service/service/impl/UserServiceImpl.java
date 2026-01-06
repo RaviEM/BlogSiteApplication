@@ -126,21 +126,26 @@ public class UserServiceImpl implements UserService {
      * Validate user registration request.
      */
     private void validateRegistrationRequest(UserRegistrationRequest request) {
+        if (request == null) {
+            throw new ValidationException("request", "Registration request is mandatory");
+        }
+        
         ValidationException errors = new ValidationException("Validation failed");
-// Validate email format
-        if (!ValidationUtil.isValidEmail(request.getUserEmail())) {
+        // Validate email format
+        if (request.getUserEmail() == null || !ValidationUtil.isValidEmail(request.getUserEmail())) {
             errors.addError("userEmail", "Email must contain '@' and end with '.com'");
         }
-// Validate password
-        if (!ValidationUtil.isValidPassword(request.getPassword())) {
+        // Validate password
+        if (request.getPassword() == null || !ValidationUtil.isValidPassword(request.getPassword())) {
             errors.addError("password", "Password must be at least 8 characters and include a letter and a digit");
         }
-// Validate username
+        // Validate username
         if (request.getUserName() == null || request.getUserName().isBlank()) {
             errors.addError("userName", "Username is mandatory");
-            if (errors.hasError()) {
-                throw errors;
-            }
+        }
+        // Throw exception if any validation errors occurred
+        if (errors.hasError()) {
+            throw errors;
         }
     }
 }
