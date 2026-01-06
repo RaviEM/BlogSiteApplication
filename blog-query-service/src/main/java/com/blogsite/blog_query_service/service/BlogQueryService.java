@@ -1,9 +1,9 @@
 package com.blogsite.blog_query_service.service;
 
 
-import com.blogsite.blog_query_service.dto. BlogSearchRequest;
-import com.blogsite.blog_query_service.dto. BlogWithAuthorResponse;
-import com.blogsite.blog_common.model. dto. response.PagedResponse;
+import com.blogsite.blog_query_service.dto.BlogSearchRequest;
+import com.blogsite.blog_query_service.dto.BlogWithAuthorResponse;
+import com.blogsite.blog_common.model. dto.response.PagedResponse;
 import java.util.List;
 /**
  * Service interface for blog query operations.

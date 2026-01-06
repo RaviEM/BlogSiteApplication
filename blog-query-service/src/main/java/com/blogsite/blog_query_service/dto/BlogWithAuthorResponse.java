@@ -2,7 +2,7 @@ package com.blogsite.blog_query_service.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok. AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
